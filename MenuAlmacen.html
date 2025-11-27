@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inventario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5aa0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ESTILOS HEADER */
+        .header {
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5aa0 100%);
+            color: white;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .header-title {
+            flex: 1;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-icon {
+            font-size: 24px;
+        }
+
+        /* ESTILOS MENÚ PRINCIPAL */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 40px;
+            flex: 1;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+            border: 3px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: #f39c12;
+        }
+
+        .menu-icon {
+            font-size: 70px;
+            margin-bottom: 25px;
+        }
+
+        .menu-card h2 {
+            color: #1a3a52;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .menu-card p {
+            color: #7f8c8d;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                gap: 30px;
+                padding: 40px 20px;
+            }
+
+            .menu-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .header-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-logo">D</div><!--hay que cambiar esta por la imagen del -->
+        <div class="header-title">Sistema de Gestión del Almacenista</div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="main-content">
+        <a href="Almacen2.html" class="menu-card">
+            <div class="menu-icon">📋</div>
+            <h2>Ver Lista de Productos</h2>
+            <p>Consulta el inventario completo de productos disponibles</p>
+             
+        </a>
+
+        <a href="registrar-entrada.html" class="menu-card">
+            <div class="menu-icon">📥</div>
+            <h2>Registrar Entrada</h2>
+            <p>Añade nuevos productos al inventario</p>
+        </a>
+
+        <a href="registrar-salida.html" class="menu-card">
+            <div class="menu-icon">📤</div>
+            <h2>Registrar Salida</h2>
+            <p>Retira productos del inventario</p>
+        </a>
+    </div>
+
+</body>
+</html>

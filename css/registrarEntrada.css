@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #f5f5f7;
+  padding: 20px;
+}
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a3a52;
+  padding: 1.5rem 2rem;
+  margin: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+.encabezado-izquierdo,
+.encabezado-derecho {
+  display: flex;
+  align-items: center;
+}
+.encabezado-texto {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.contenedor-formulario {
+  background-color: white;
+  margin: 1rem;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  min-height: 600px;
+  border-left: 5px solid #1a3a52;
+}
+.grupo-input {
+  margin-bottom: 2rem;
+}
+.grupo-input label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+.grupo-input input,
+.grupo-input select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #d1e7f5;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.grupo-input input:focus,
+.grupo-input select:focus {
+  outline: none;
+  border-color: #7ec8e3;
+}
+.fila-doble {
+  display: flex;
+  gap: 1rem;
+}
+.fila-doble .grupo-input {
+  flex: 1;
+}
+.contenedor-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.boton {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  min-width: 120px;
+}
+.boton-guardar {
+  background-color: #27ae60;
+  color: white;
+}
+.boton-guardar:hover {
+  background-color: #229954;
+}
+.boton-editar {
+  background-color: #3498db;
+  color: white;
+}
+.boton-editar:hover {
+  background-color: #2980b9;
+}
+.boton-eliminar {
+  background-color: #e74c3c;
+  color: white;
+}
+.boton-eliminar:hover {
+  background-color: #c0392b;
+}
+.boton-cancelar {
+  background-color: #95a5a6;
+  color: white;
+}
+.boton-cancelar:hover {
+  background-color: #7f8c8d;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal.activo {
+  display: flex;
+}
+
+.modal-contenido {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-contenido h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.modal-datos {
+  background-color: #f5f5f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.modal-datos p {
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.modal-datos p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-datos strong {
+  display: inline-block;
+  width: 140px;
+  color: #555;
+}
+
+.modal-mensaje {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.modal-advertencia {
+  font-size: 0.95rem;
+  color: #e74c3c;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .encabezado {
+    padding: 1.2rem 1.5rem;
+    margin: 0.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .encabezado-texto {
+    font-size: 1.3rem;
+  }
+
+  .contenedor-formulario {
+    margin: 0.5rem;
+    padding: 2rem 1.5rem;
+    min-height: auto;
+  }
+
+  .fila-doble {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contenedor-botones {
+    justify-content: center;
+  }
+
+  .boton {
+    min-width: 100px;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .modal-contenido {
+    padding: 1.5rem;
+  }
+
+  .modal-contenido h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-datos strong {
+    width: 120px;
+    font-size: 0.95rem;
+  }
+}
+/* Celulares (480px o menos) */
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  .encabezado {
+    padding: 1rem;
+    margin: 0.25rem;
+    border-radius: 8px;
+  }
+  .encabezado-texto {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .contenedor-formulario {
+    margin: 0.25rem;
+    padding: 1.5rem 1rem;
+    border-left: 3px solid #1a3a52;
+    border-radius: 8px;
+  }
+  .grupo-input {
+    margin-bottom: 1.5rem;
+  }
+
+  .grupo-input label {
+    font-size: 0.95rem;
+  }
+
+  .grupo-input input,
+  .grupo-input select {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .contenedor-botones {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .boton {
+    width: 100%;
+    min-width: auto;
+    padding: 0.85rem;
+    font-size: 1rem;
+  }
+
+  .modal {
+    padding: 0.5rem;
+  }
+
+  .modal-contenido {
+    padding: 1.25rem;
+    width: 95%;
+  }
+
+  .modal-contenido h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-datos {
+    padding: 1rem;
+  }
+
+  .modal-datos p {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .modal-datos strong {
+    width: 100%;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .modal-mensaje {
+    font-size: 1rem;
+  }
+
+  .modal-advertencia {
+    font-size: 0.9rem;
+  }
+
+  .modal-botones {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .modal-botones .boton {
+    width: 100%;
+  }
+}

@@ -1,0 +1,84 @@
+# Dependencias
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Producción
+/build
+/dist
+/out
+
+# Misc
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+Thumbs.db
+desktop.ini
+
+# Archivos de usuario (excluir completamente)
+/.VirtualBox/
+/.android/
+/.cache/
+/.config/
+/.gradle/
+/.m2/
+/.vscode/
+/AppData/
+/Documents/
+Downloads/
+/Music/
+/Pictures/
+/Videos/
+
+# Ejecutables y archivos grandes
+*.exe
+*.msi
+*.zip
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.docx
+*.url
+
+# Tu proyecto específico - agrega aquí otras carpetas/archivos que no quieras trackear
+EXPENDIO2/
+Expendio-main.zip
+Expendio-main/
+ExpendioApi-Julio.zip
+ExpendioApi-Julio/
+ExpendioFrontend-Julio.zip
+ExpendioFrontend-main.zip
+HTML/
+*.pdf
+*.jpg
+*.docx
+__MACOSX/
+agregarProducto/
+ejemploapp/
+emulador/
+julio-main.zip
+julio-main/
+mysql-workbench-community-8.0.44-winx64.msi
+nuevoUnidad/
+project/
+vistas/

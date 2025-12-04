@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacén - Expendio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/Almacen2.css">
+</head>
+<body>
+    <div class="almacen-container">
+        <!-- Header del Almacén -->
+        <div class="almacen-header">
+            <div class="almacen-title">
+                <i class="fas fa-warehouse"></i>
+                Almacén - Expendio
+            </div>
+            <div class="almacen-actions">
+                <button class="btn btn-primary" onclick="openAddModal()">
+                    <i class="fas fa-plus"></i>
+                    Agregar Producto
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='MenuAlmacen.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al Menú
+                </button>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="almacen-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalProducts">4</div>
+                <div class="stat-label">Total Productos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="lowStock">1</div>
+                <div class="stat-label">Stock Bajo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalValue">$10,580.00</div>
+                <div class="stat-label">Valor Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="categories">2</div>
+                <div class="stat-label">Categorías</div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="almacen-filters">
+            <h3><i class="fas fa-filter"></i> Filtros de Búsqueda</h3>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchProduct">Buscar Producto:</label>
+                    <input type="text" id="searchProduct" class="filter-input" placeholder="Nombre del producto...">
+                </div>
+                <div class="filter-group">
+                    <label for="filterCategory">Categoría:</label>
+                    <select id="filterCategory" class="filter-input">
+                        <option value="">Todas las categorías</option>
+                        <option value="Obscuras">Obscuras</option>
+                        <option value="Rubias">Rubias</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterStock">Estado Stock:</label>
+                    <select id="filterStock" class="filter-input">
+                        <option value="">Todos</option>
+                        <option value="alto">Stock Alto</option>
+                        <option value="medio">Stock Medio</option>
+                        <option value="bajo">Stock Bajo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Productos -->
+        <div class="almacen-table">
+            <div class="table-header">
+                <h3 class="table-title"><i class="fas fa-list"></i> Inventario de Productos</h3>
+            </div>
+            <div class="table-container">
+                <table id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Cantidad</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Venta</th>
+                            <th>Valor Total</th>
+                            <th>Estado Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <tr>
+                            <td>IND-001</td>
+                            <td>Cerveza Indio 325ml 6 pack</td>
+                            <td>Obscuras</td>
+                            <td>30</td>
+                            <td>$100.00</td>
+                            <td>$150.00</td>
+                            <td>$4,500.00</td>
+                            <td><span class="stock-status stock-alto">ALTO</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>COR-001</td>
+                            <td>Cerveza Corona 355ml 6 pack</td>
+                            <td>Rubias</td>
+                            <td>15</td>
+                            <td>$80.00</td>
+                            <td>$120.00</td>
+                            <td>$1,800.00</td>
+                            <td><span class="stock-status stock-medio">MEDIO</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MOD-001</td>
+                            <td>Cerveza Modelo Negra 355ml 6 pack</td>
+                            <td>Obscuras</td>
+                            <td>8</td>
+                            <td>$120.00</td>
+                            <td>$185.00</td>
+                            <td>$1,480.00</td>
+                            <td><span class="stock-status stock-bajo">BAJO</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>VIC-001</td>
+                            <td>Cerveza Mega Victoria 1.2L</td>
+                            <td>Rubias</td>
+                            <td>25</td>
+                            <td>$75.00</td>
+                            <td>$112.00</td>
+                            <td>$2,800.00</td>
+                            <td><span class="stock-status stock-medio">MEDIO</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar productos -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"><i class="fas fa-plus-circle"></i> Agregar Producto</h2>
+                <button class="close" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productCode">Código del Producto:</label>
+                    <input type="text" id="productCode" placeholder="Ej: IND-001" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Nombre del Producto:</label>
+                    <input type="text" id="productName" placeholder="Ej: Cerveza Indio 325ml" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Categoría:</label>
+                    <select id="productCategory" required>
+                        <option value="">Selecciona una categoría</option>
+                        <option value="Obscuras">Obscuras</option>
+                        <option value="Rubias">Rubias</option>
+                    </select>
+                </div>
+                <!-- Se quita el campo Cantidad del modal según petición: la cantidad se mantiene en la tabla -->
+                <div class="form-group">
+                    <label for="productPriceCompra">Precio de Compra:</label>
+                    <input type="number" id="productPriceCompra" placeholder="0.00" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="productPriceVenta">Precio de Venta:</label>
+                    <input type="number" id="productPriceVenta" placeholder="0.00" min="0" step="0.01" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="btn-save">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Manejo de modal y acciones de editar / eliminar en Almacen2
+        let editingRow = null;
+
+        function openAddModal() {
+            editingRow = null;
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus-circle"></i> Agregar Producto';
+            document.getElementById('productForm').reset();
+            document.getElementById('productModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('show');
+            editingRow = null;
+        }
+
+        // Delegación de eventos para botones de editar/eliminar dentro de la tabla
+        document.getElementById('productsTableBody').addEventListener('click', function(e) {
+            const editBtn = e.target.closest('.btn-edit');
+            const delBtn = e.target.closest('.btn-delete');
+            if (editBtn) {
+                const row = editBtn.closest('tr');
+                openEditModalFromRow(row);
+            } else if (delBtn) {
+                const row = delBtn.closest('tr');
+                deleteRow(row);
+            }
+        });
+
+        function openEditModalFromRow(row) {
+            editingRow = row;
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> Editar Producto';
+            const cells = row.children;
+            document.getElementById('productCode').value = cells[0].textContent.trim();
+            document.getElementById('productName').value = cells[1].textContent.trim();
+            document.getElementById('productCategory').value = cells[2].textContent.trim();
+            // La cantidad no es editable desde el modal. Se preserva la cantidad que existe en la fila.
+            // Precios: asumimos columna 4 = precio compra, 5 = precio venta
+            document.getElementById('productPriceCompra').value = parseFloat(cells[4].textContent.replace(/[$,]/g, '')) || 0;
+            document.getElementById('productPriceVenta').value = parseFloat(cells[5].textContent.replace(/[$,]/g, '')) || 0;
+            document.getElementById('productModal').classList.add('show');
+        }
+
+        function deleteRow(row) {
+            if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+                row.remove();
+                updateStats();
+            }
+        }
+
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const code = document.getElementById('productCode').value.trim();
+            const name = document.getElementById('productName').value.trim();
+            const category = document.getElementById('productCategory').value;
+            // Si se está editando, conservar la cantidad que ya está en la fila; si es nuevo, iniciar en 0
+            let qty;
+            if (editingRow) {
+                qty = parseInt(editingRow.children[3].textContent) || 0;
+            } else {
+                qty = 0;
+            }
+            const priceCompra = parseFloat(document.getElementById('productPriceCompra').value) || 0;
+            const priceVenta = parseFloat(document.getElementById('productPriceVenta').value) || 0;
+
+                if (editingRow) {
+                const cells = editingRow.children;
+                cells[0].textContent = code;
+                cells[1].textContent = name;
+                cells[2].textContent = category;
+                    // No modificamos la columna cantidad desde el modal
+                cells[4].textContent = `$${priceCompra.toFixed(2)}`;
+                cells[5].textContent = `$${priceVenta.toFixed(2)}`;
+                cells[6].textContent = `$${(qty * priceVenta).toFixed(2)}`;
+                const status = getStockStatus(qty);
+                cells[7].innerHTML = `<span class="stock-status ${status.class}">${status.text.toUpperCase()}</span>`;
+            } else {
+                // Agregar nueva fila
+                const tbody = document.getElementById('productsTableBody');
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${code}</td>
+                    <td>${name}</td>
+                    <td>${category}</td>
+                    <td>${qty}</td>
+                    <td>$${priceCompra.toFixed(2)}</td>
+                    <td>$${priceVenta.toFixed(2)}</td>
+                    <td>$${(qty * priceVenta).toFixed(2)}</td>
+                    <td><span class="stock-status ${getStockStatus(qty).class}">${getStockStatus(qty).text.toUpperCase()}</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            }
+
+            updateStats();
+            closeModal();
+            this.reset();
+        });
+
+        function getStockStatus(qty) {
+            if (qty >= 30) return { class: 'stock-alto', text: 'Alto' };
+            if (qty >= 10) return { class: 'stock-medio', text: 'Medio' };
+            if (qty > 0) return { class: 'stock-bajo', text: 'Bajo' };
+            return { class: 'stock-agotado', text: 'Agotado' };
+        }
+
+        function updateStats() {
+            const rows = Array.from(document.querySelectorAll('#productsTableBody tr'));
+            document.getElementById('totalProducts').textContent = rows.length;
+            const lowStock = rows.filter(r => parseInt(r.children[3].textContent) < 10).length;
+            document.getElementById('lowStock').textContent = lowStock;
+            const totalValue = rows.reduce((sum, r) => {
+                const qty = parseInt(r.children[3].textContent) || 0;
+                const price = parseFloat(r.children[5].textContent.replace(/[$,]/g, '')) || 0;
+                return sum + (qty * price);
+            }, 0);
+            document.getElementById('totalValue').textContent = `$${totalValue.toFixed(2)}`;
+            const categories = new Set(rows.map(r => r.children[2].textContent.trim())).size;
+            document.getElementById('categories').textContent = categories;
+        }
+
+        // Cerrar modal al hacer clic fuera de él
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Inicializar estadísticas al cargar
+        window.addEventListener('load', updateStats);
+    </script>
+</body>
+</html>

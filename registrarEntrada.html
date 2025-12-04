@@ -3,13 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="css/registrarEntrada.css" />
+
     <title>Registrar Entrada</title>
   </head>
 
@@ -38,6 +41,7 @@
             <option value="">Seleccione un producto</option>
           </select>
         </div>
+
         <div class="fila-doble">
           <div class="grupo-input">
             <label for="lotes">Número de Lotes</label>
@@ -55,6 +59,7 @@
             />
           </div>
         </div>
+
         <div class="grupo-input">
           <label for="cantidad">Cantidad Total (automática)</label>
           <input type="number" id="cantidad" placeholder="0" readonly />
@@ -97,20 +102,28 @@
           </div>
         </div>
 
+        <!-- BOTONES PRINCIPALES -->
         <div class="contenedor-botones">
           <button type="submit" class="boton boton-guardar">Guardar</button>
-          <button type="button" class="boton boton-eliminar" id="btnEliminar">
-            Eliminar
-          </button>
-          <button type="button" class="boton boton-cancelar" id="btnCancelar">
+
+          <!-- CANCELAR NUEVO -->
+          <a href="MenuAlmacen.html" class="boton boton-cancelar-volver">
             Cancelar
+          </a>
+
+          <!-- BORRAR con estilo propio -->
+          <button type="button" class="boton boton-borrar" id="btnCancelar">
+            Borrar
           </button>
         </div>
       </form>
     </div>
+
+    <!-- ========= MODAL GUARDAR ========= -->
     <div id="modalGuardar" class="modal">
       <div class="modal-contenido">
         <h2>Confirmar Datos</h2>
+
         <div class="modal-datos">
           <p><strong>Proveedor:</strong> <span id="modalProveedor"></span></p>
           <p><strong>Lotes:</strong> <span id="modalLotes"></span></p>
@@ -119,19 +132,14 @@
             <span id="modalCantidadPorLote"></span>
           </p>
           <p>
-            <strong>Cantidad total:</strong>
-            <span id="modalCantidad"></span>
+            <strong>Cantidad total:</strong> <span id="modalCantidad"></span>
           </p>
           <p>
-            <strong>Precio Unitario:</strong> $
-            <span id="modalPrecio"></span>
+            <strong>Precio Unitario:</strong> $<span id="modalPrecio"></span>
           </p>
           <p><strong>Fecha:</strong> <span id="modalFecha"></span></p>
           <p><strong>Hora:</strong> <span id="modalHora"></span></p>
-          <p>
-            <strong>Costo Total:</strong> $
-            <span id="modalTotal"></span>
-          </p>
+          <p><strong>Costo Total:</strong> $<span id="modalTotal"></span></p>
         </div>
 
         <div class="modal-botones">
@@ -140,7 +148,7 @@
           </button>
           <button class="boton boton-editar" id="editarGuardar">Editar</button>
           <button class="boton boton-cancelar" id="cancelarGuardar">
-            Cancel
+            Cancelar
           </button>
         </div>
       </div>

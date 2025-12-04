@@ -21,6 +21,8 @@ obtenerHora();
 setInterval(obtenerHora, 60000);
 
 const sucursalUsuario = 1;
+const usuarioActual = 3; 
+
 const sucursales = [
     { id: 1, nombre: "Sucursal Centro" },
     { id: 2, nombre: "Sucursal Norte" }
@@ -34,7 +36,6 @@ sucursalesDisponibles.forEach(s => {
     selectSucursal.appendChild(option);
 });
 
-const usuarioActual = 3;
 const almacenistaGeneral = 1;
 const almacenistas = [
     { id: 1, nombre: "Almacenista General" },
@@ -52,40 +53,57 @@ disponibles.forEach(a => {
     selectReceptor.appendChild(option);
 });
 
-const unidadesActuales = parseInt(document.querySelector(".div5-8").textContent);
-const unidadesAEnviar = parseInt(document.querySelector(".div6-8").textContent);
-const unidadesRestantes = unidadesActuales - unidadesAEnviar;
-document.querySelector(".div8-8").textContent = unidadesRestantes;
-
-
 const nombreProductoDiv = document.getElementById("nombreProducto");
 const unidadesActualesDiv = document.getElementById("unidadesActuales");
 const cantidadEnviarSelect = document.getElementById("cantidadEnviar");
 const stockRestanteDiv = document.getElementById("stockRestante");
 
-const productoEjemplo = {
-    nombre: "Producto A",
-    unidadesActuales: 8
-};
+const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const ID_PRODUCTO_A_CARGAR = 1;
 
-nombreProductoDiv.textContent = productoEjemplo.nombre;
-unidadesActualesDiv.textContent = productoEjemplo.unidadesActuales;
-stockRestanteDiv.textContent = productoEjemplo.unidadesActuales;
-stockRestanteDiv.style.color = "white";
+let productoCargado = {}; 
+async function cargarDatosIniciales() {
+    try {
+        const productoResponse = await fetch(`${API_BASE_URL}/productos/${ID_PRODUCTO_A_CARGAR}`);
 
-for (let i = 1; i <= productoEjemplo.unidadesActuales; i++) {
-    const option = document.createElement("option");
-    option.value = i;
-    option.textContent = i;
-    cantidadEnviarSelect.appendChild(option);
+        if (!productoResponse.ok) {
+            throw new Error(`Producto no encontrado o error: ${productoResponse.status}`);
+        }
+        
+        const producto = await productoResponse.json(); 
+        
+        productoCargado = producto; 
+
+        const nombreDelProducto = producto.nombre || producto.name; 
+        const unidadesDisponibles = producto.unidades_stock || producto.stock || 0; 
+
+        nombreProductoDiv.textContent = nombreDelProducto;
+        unidadesActualesDiv.textContent = unidadesDisponibles; 
+        stockRestanteDiv.textContent = unidadesDisponibles;
+        stockRestanteDiv.style.color = "white";
+
+        cantidadEnviarSelect.innerHTML = ''; 
+        for (let i = 1; i <= unidadesDisponibles; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            cantidadEnviarSelect.appendChild(option);
+        }
+
+        cantidadEnviarSelect.addEventListener("change", () => {
+            const cantidad = parseInt(cantidadEnviarSelect.value);
+            const stockRestante = unidadesDisponibles - cantidad; 
+            stockRestanteDiv.textContent = stockRestante;
+            stockRestanteDiv.style.color = stockRestante < 3 ? "red" : "white";
+        });
+        
+    } catch (error) {
+        console.error('Error FATAL en la carga inicial:', error);
+        mostrarNotificacion(`Fallo de conexión o la ruta API está mal: ${error.message}`, "error");
+    }
 }
 
-cantidadEnviarSelect.addEventListener("change", () => {
-    const cantidad = parseInt(cantidadEnviarSelect.value);
-    const stockRestante = productoEjemplo.unidadesActuales - cantidad;
-    stockRestanteDiv.textContent = stockRestante;
-    stockRestanteDiv.style.color = stockRestante < 3 ? "red" : "white";
-});
+cargarDatosIniciales(); 
 
 const btnEnviar = document.getElementById("env");
 function mostrarNotificacion(mensaje, tipo = "info") {

@@ -1,45 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Expendio</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-</head>
-<body class="login-bg">
-    <div class="login-flex-container">
-        <div class="login-logo">
-            <img src="img/logo.png" alt="Logo Expendio" />
-        </div>
-        <div class="login-container">
-            <h2>Bienvenido a Expendio</h2>
-            <p class="login-subtitle">Ingresa tu usuario y contraseña para poder continuar</p>
-            
-            <form id="loginForm">
-                <div class="login-input">
-                    <span class="login-icon">📧</span>
-                    <input type="text" id="nombre_usuario" placeholder="Usuario (ej: admin_api)" required>
-                </div>
-                <div class="login-input">
-                    <span class="login-icon">🔒</span>
-                    <input type="password" id="contrasena" placeholder="Contraseña" required>
-                </div>
-                <button type="submit" class="login-btn" id="continuar-btn">
-                    Continuar
-                    <span class="spinner" id="spinner" style="display:none;"></span>
-                </button>
-            </form>
 
-            <div class="login-divider">o regístrate con</div>
-            <div class="login-social">
-                <button class="social-btn facebook">f</button>
-                <button class="social-btn google">G</button>
-                <button class="social-btn apple"></button>
-            </div>
-        </div>
-    </div>
-
-    <script>
         const loginForm = document.getElementById('loginForm');
 
         loginForm.addEventListener('submit', async (e) => {
@@ -105,6 +64,4 @@
                 btn.innerText = "Continuar";
             }
         });
-    </script>
-</body>
-</html>
+   

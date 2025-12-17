@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacén - Expendio (Conectado)</title>
+    <!-- Font Awesome para íconos (sigue siendo externo, pero es estándar para íconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><!-- Última versión en el momento de la creación -->
+    <link rel="stylesheet" href="../css/Almacen2.css">
+</head>
+<body class="page-container">
+    
+    <div id="app" class="app-container">
+        
+        <!-- Header del Almacén -->
+        <div class="almacen-header">
+            <div class="almacen-title">
+                <i class="fas fa-warehouse" style="color:#4f46e5;"></i>
+                <span>Almacén - Expendio</span>
+            </div>
+            <div class="almacen-actions">
+                <button class="btn btn-primary" onclick="openAddModal()">
+                    <i class="fas fa-plus"></i> 
+                    <span>AGREGAR PRODUCTO</span> 
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='MenuAlmacen.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>VOLVER AL MENÚ</span> 
+                </button>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="almacen-stats">
+            <div class="stat-card" style="border-left-color: #6366f1;">
+                <div class="stat-number" id="totalProducts">0</div>
+                <div class="stat-label">TOTAL PRODUCTOS</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #ef4444;">
+                <div class="stat-number" id="lowStock">0</div>
+                <div class="stat-label">STOCK BAJO</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #10b981;">
+                <div class="stat-number" id="totalValue">$0.00</div>
+                <div class="stat-label">VALOR TOTAL</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #f59e0b;">
+                <div class="stat-number" id="categories">0</div>
+                <div class="stat-label">CATEGORÍAS</div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="almacen-filters">
+            <h3 style="color:#4f46e5;"><i class="fas fa-filter"></i> Filtros de Búsqueda</h3>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchProduct">Buscar Producto:</label>
+                    <input type="text" id="searchProduct" class="filter-input" placeholder="Nombre o código..." oninput="filterProducts()">
+                </div>
+                <div class="filter-group">
+                    <label for="filterCategory">Categoría:</label>
+                    <select id="filterCategory" class="filter-input" onchange="filterProducts()">
+                        <option value="">Todas las categorías</option>
+                        <!-- Las opciones se llenarán dinámicamente -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterStock">Estado Stock:</label>
+                    <select id="filterStock" class="filter-input" onchange="filterProducts()">
+                        <option value="">Todos</option>
+                        <option value="ALTO">Stock Alto</option>
+                        <option value="MEDIO">Stock Medio</option>
+                        <option value="BAJO">Stock Bajo</option>
+                    </select>
+                </div>
+            </div>
+        </div>     
+
+        <!-- Tabla de Productos -->
+        <div class="almacen-table">
+            <div class="table-header">
+                <h3 class="table-title" style="font-size: 1.5rem; font-weight: 600; color: #1f2937;"><i class="fas fa-list" style="color:#4f46e5;"></i> Inventario de Productos</h3>
+            </div>
+            <div class="table-container">
+                <table id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Marca</th>
+                            <th>Cantidad</th>
+                            <th>P. Compra</th>
+                            <th>P. Venta</th>
+                            <th>Valor Total</th>
+                            <th>Estado Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <!-- Mantenemos el mensaje de "Cargando" como el contenido inicial de la tabla -->
+                        <tr><td colspan="10" style="text-align:center; padding: 1rem; color: #6b7280;">Cargando productos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar productos (Formulario) -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" style="font-size: 1.5rem; font-weight: 600; color: #1f2937;"><i class="fas fa-plus-circle" style="color:#4f46e5;"></i> Agregar Producto</h2>
+                
+            </div>
+            
+            <form id="productForm">
+                <input type="hidden" id="productId" value="">
+                
+                <div class="form-group"><label for="productCode">CÓDIGO DE BARRAS:</label><input type="text" id="productCode" class="form-input" placeholder="Ej: 750123456789" required></div>
+                <div class="form-group"><label for="productName">NOMBRE DEL PRODUCTO:</label><input type="text" id="productName" class="form-input" placeholder="Ej: Cerveza Indio 325ml" required></div>
+                
+                <div class="form-group"><label for="productCategory">CATEGORÍA:</label><select id="productCategory" class="form-input" required><option value="">Selecciona una categoría</option></select></div>
+                <div class="form-group"><label for="select_marca">MARCA:</label><select id="select_marca" class="form-input" required><option value="">Selecciona una marca</option></select></div>
+
+                <div class="form-group"><label for="select_presentacion">PRESENTACIÓN:</label><select id="select_presentacion" class="form-input" required><option value="">Selecciona presentación</option><option value="355ml">355ml</option><option value="473ml">473ml</option><option value="1l">1 Litro</option></select></div>
+                <div class="form-group"><label for="select_envase">TIPO DE ENVASE:</label><select id="select_envase" class="form-input" required><option value="">Selecciona envase</option><option value="lata">Lata</option><option value="botella">Botella</option><option value="barril">Barril</option></select></div>
+                
+                <div class="form-group"><label for="stockInicial">STOCK INICIAL:</label><input type="number" id="stockInicial" class="form-input" placeholder="Cantidad al ingresar" min="0" required></div>
+                <div class="form-group"><label for="select_sucursal">SUCURSAL DE DESTINO:</label><select id="select_sucursal" class="form-input" required><option value="">Selecciona sucursal</option></select></div>
+
+                <div class="form-group"><label for="productPriceCompra">PRECIO DE COMPRA:</label><input type="number" id="productPriceCompra" class="form-input" placeholder="0.00" min="0" step="0.01" required></div>
+                <div class="form-group"><label for="productPriceVenta">PRECIO DE VENTA:</label><input type="number" id="productPriceVenta" class="form-input" placeholder="0.00" min="0" step="0.01" required></div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-save">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Model de Alerta Personalizada  -->
+    <div id="customAlert" class="modal">
+        <div class="modal-content" style="max-width: 400px; text-align: center; padding: 1.5rem;">
+            <h3 id="alertTitle" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;"></h3> <!-- Aqui va el titulo (title) de js -->
+            <p id="alertMessage" style="color: #4b5563; margin-bottom: 1.5rem;"></p><!-- Aqui va el mensaje (message) de js -->
+            <button onclick="closeAlert()" class="btn btn-primary" style="background-color: #4f46e5;">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="../js/Almacen.js"></script>
+</body>
+</html>

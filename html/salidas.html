@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrador Salida - iligencia</title>
+    <link rel="stylesheet" href="../css/registrarSalida.css">
+  
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="header-left">
+            <img src="../img/logo.png" alt="logo">
+            <h1>iligencia</h1>
+        </div>
+        <div class="header-right">
+            <a href="MenuAlmacen.html" class="boton-volver-menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m7 7l-7-7 7-7"/>
+                </svg>
+                Volver al Menú
+            </a>
+        </div>
+    </div>
+
+    <div class="section-title">Registrador Salida</div>
+
+    <div class="content">
+        <!-- Fecha y Hora -->
+        <div class="section">
+            <div class="form-group">
+                <label>Fecha:</label>
+                <div class="grid-2">
+                    <div class="input-wrapper">
+                        <input type="text" id="fechaActual" readonly>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="horaActual" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Destino -->
+        <div class="section">
+            <div class="form-group">
+                <label>Destino:</label>
+                <div class="grid-2">
+                    <div class="input-wrapper">
+                        <select id="sucursalSelect">
+                            <option value="">Seleccionar sucursal...</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <select id="receptorSelect">
+                            <option value="">Seleccionar receptor...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partidas del Stock -->
+        <div class="section">
+            <div class="section-header">
+                <img src="../img/caja.png" alt="caja">
+                <h3>Partidas del Stock</h3>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Lotes Totales</th>
+                            <th>Cantidad a Enviar</th>
+                            <th style="text-align: right;">Lotes Restantes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="nombreProducto">-</td>
+                            <td id="unidadesActuales" style="text-align: center;">-</td>
+                            <td style="text-align: center;">
+                                <select id="cantidadEnviar">
+                                    <option value="">Seleccionar...</option>
+                                </select>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="stock-restante" id="stockRestante">Esperando...</div>
+                            </td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="3">Total de lotes restantes:</td>
+                            <td style="text-align: right;">
+                                <div class="stock-restante" id="totalRestante" style="text-align: right; margin: 0;">0</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="button-group">
+            <button id="can">
+                <img src="../img/cancelar.png" alt="cancelar">
+                Cancelar
+            </button>
+            <button id="env">
+                <img src="../img/enviar.png" alt="enviar">
+                Enviar
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/Salidas.js"></script>
+
+</body>
+</html>

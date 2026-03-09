@@ -2,6 +2,7 @@
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('sidebar-overlay');
 const openBtn = document.querySelector('.menu-toggle');
+const ubicacionBtn = document.querySelector('.btn-ubicacion'); // Botón de ubicación
 const closeBtn = document.getElementById('closeSidebar');
 
 // Abrir sidebar
@@ -9,6 +10,11 @@ openBtn.addEventListener('click', () => {
     sidebar.classList.add('open');
     overlay.style.display = 'block';
 });
+// Funcionalidad de ubicación
+ubicacionBtn.addEventListener('click', () => {
+   window.location.href = 'ubicacion.html'; // Redirige a la página de ubicación
+});
+
 
 // Cerrar sidebar con la X
 closeBtn.addEventListener('click', () => {

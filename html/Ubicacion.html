@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicación - Expendio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/Ubicacion.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="menu.html">
+        <div class="logo"><img src="../img/logo.png" alt="Logo"></div>
+        </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar cervezas...">
+        </div>
+        <div class="header-icons">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-bars"></i> <!-- Barra lateral -->
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-logo"><img src="../img/logo.png" alt="Logo"></div>
+            <h1 class="hero-title">📍 Ubicación</h1>
+            <p class="hero-subtitle">Encuentra nuestro expendio y conoce nuestros horarios de atención</p>
+            <div class="action-buttons">
+    <!-- Página actual (NO navega) -->
+    <span class="action-btn active">
+        <i class="fa-solid fa-location-dot"></i>
+        Ubicación del negocio
+    </span>
+
+    <!-- Navega al mapa -->
+    <a href="MapaUbicacion.html" class="action-btn">
+        <i class="fa-solid fa-map-location-dot"></i>
+        Mapa de Ubicación
+    </a>
+</div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main class="main-container">
+        <!-- Información del Negocio -->
+        <div class="info-card">
+            <div class="card-header">
+                <i class="fa-solid fa-store"></i>
+                <h2>Ubicación del Negocio</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-field">
+                    <label class="field-label">
+                        <i class="fa-solid fa-tag"></i>
+                        Nombre del negocio
+                    </label>
+                    <div class="field-value">Diligencia</div>
+                </div>
+                <div class="info-field">
+                    <label class="field-label">
+                        <i class="fa-solid fa-phone"></i>
+                        Teléfono del negocio
+                    </label>
+                    <div class="field-value">8711453534</div>
+                </div>
+                <div class="info-field">
+                    <label class="field-label">
+                        <i class="fa-solid fa-map-marker-alt"></i>
+                        Dirección completa
+                    </label>
+                    <div class="field-value">Av. Morelos 123, Centro, Torreón, Coah.</div>
+                </div>
+                <div class="info-field">
+                    <label class="field-label">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        Coordenadas GPS
+                    </label>
+                    <div class="field-value">Latitud: 25.65797° N | Longitud: -103.3405° O</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horarios de Atención -->
+        <div class="schedule-card">
+            <div class="schedule-title">
+                <i class="fa-solid fa-clock"></i>
+                Horarios de Atención
+            </div>
+            <div class="schedule-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span class="schedule-day">Lunes a Viernes:</span>
+                <span class="schedule-time">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="schedule-item">
+                <i class="fa-solid fa-calendar-week"></i>
+                <span class="schedule-day">Sábados:</span>
+                <span class="schedule-time">9:00 AM - 2:00 PM</span>
+            </div>
+            <div class="schedule-item">
+                <i class="fa-solid fa-calendar-xmark"></i>
+                <span class="schedule-day">Domingos:</span>
+                <span class="schedule-time">Cerrado</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Ubicación - Expendio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/MapaUbicacion.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="menu.html">
+        <div class="logo"><img src="../img/logo.png" alt="Logo"></div> </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar cervezas...">
+        </div>
+        <div class="header-icons">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-logo"><img src="../img/logo.png" alt="Logo"></div>
+            <h1 class="hero-title">📍 Ubicación</h1>
+            <p class="hero-subtitle">Encuentra nuestro expendio y conoce nuestros horarios de atención</p>
+            <div class="action-buttons">
+                     <a href="Ubicacion.html" class="action-btn">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Ubicación del negocio
+                    </a> 
+    
+                <button class="action-btn active">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    Mapa de Ubicación
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main class="main-container">
+        <!-- Card del Mapa -->
+        <div class="map-card">
+            <div class="card-header">
+                <i class="fa-solid fa-map-marked-alt"></i>
+                <h2>Mapa de Ubicación</h2>
+            </div>
+
+            <div class="map-content">
+                <!-- Mapa -->
+                <div class="map-container">
+                    <iframe 
+                        class="map-image"
+                        src="https://www.google.com/maps/embed?pb=!4v1766522126584!6m8!1m7!1sxVQ1oOAn6HW3AR4ULhfPhQ!2m2!1d25.53450845703981!2d-103.2209098489051!3f339.39268884733923!4f-3.0695354395474936!5f0.7820865974627469"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="action-sidebar">
+                    <button class="map-action-btn" onclick="abrirGoogleMaps()">
+                        <i class="fa-brands fa-google"></i>
+                        <span>Abrir en Google Maps</span>
+                    </button>
+
+
+                    <button class="map-action-btn" onclick="copyAddress()">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Copiar dirección</span>
+                    </button>
+
+                    <button class="map-action-btn" id="btnCambiarLocal" onclick="toggleLocal()">
+                    <i class="fa-solid fa-store"></i>
+                    <span>Ir a Local 2</span>
+                    </button>
+
+                    <div class="map-info">
+                        <h3><i class="fa-solid fa-info-circle"></i> Información</h3>
+                        <p><strong>Dirección:</strong><br>Av. Morelos 123, Centro<br>Torreón, Coahuila</p>
+                        <p><strong>Teléfono:</strong><br>871 145 3534</p>
+                        <p><strong>Coordenadas:</strong><br>25.65797° N, -103.3405° O</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   
+
+    <script src="../js/MapaUbicacion.js"></script>
+</body>
+</html>

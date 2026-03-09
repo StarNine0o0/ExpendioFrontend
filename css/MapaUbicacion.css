@@ -1,0 +1,423 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: #0D3B66;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            background: rgb(13, 59, 102);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0D3B66;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 30px;
+        }
+
+        .search-bar input {
+               width: 100%;
+             color: rgb(255, 255, 255);
+             font-size: 1rem;
+            padding: 12px 20px;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            border-image: initial;
+            border-radius: 10px;
+            background: rgb(34, 48, 74);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-bar input:focus {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 25px;
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+
+        .header-icons i {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .header-icons i:hover {
+            transform: scale(1.15);
+        }
+
+        /* Banner Hero */
+        .hero-banner {
+            background: linear-gradient(135deg, #0D3B66 0%, #1a5490 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -80px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #0D3B66 0%, #1a5490 100%);
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #0D3B66;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        /* Botones principales */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            color: #0D3B66;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .action-btn i {
+            font-size: 1.3rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        }
+
+        .action-btn.active {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            max-width: 1400px;
+            margin: -40px auto 60px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Card del mapa */
+        .map-card {
+            background: #fff;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            color: #0D3B66;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+        }
+
+        .card-header h2 {
+            color: #0D3B66;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Contenedor del mapa y botones */
+        .map-content {
+            display: grid;
+            grid-template-columns: 1fr 500px;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .map-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            height: 400px;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            min-height: 450px;
+            border: none;
+            display: block;
+        }
+      
+        .map-overlay i {
+            color: #0D3B66;
+            margin-right: 8px;
+        }
+        /* Botones de acción laterales */
+        .action-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .map-action-btn {
+            background: linear-gradient(135deg, #0D3B66 0%, #1a5490 100%);
+            color: #fff;
+            padding: 20px 25px;
+            border: none;
+            border-radius: 18px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(13, 59, 102, 0.3);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .map-action-btn i {
+            font-size: 1.5rem;
+            background: rgba(255,215,0,0.2);
+            padding: 12px;
+            border-radius: 12px;
+            min-width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-action-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(13, 59, 102, 0.4);
+            background: linear-gradient(135deg, #1a5490 0%, #2a6bb0 100%);
+        }
+
+        .map-action-btn:active {
+            transform: translateY(-2px) scale(1);
+        }
+
+        /* Info adicional */
+        .map-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 18px;
+            border-left: 5px solid #ffd700;
+        }
+
+        .map-info h3 {
+            color: #0D3B66;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .map-info h3 i {
+            color: #ffd700;
+        }
+
+        .map-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .map-info strong {
+            color: #0D3B66;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .map-content {
+                grid-template-columns: 1fr;
+            }
+
+            .action-sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .map-action-btn {
+                flex: 1;
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .search-bar {
+                margin: 0 15px;
+            }
+
+            .hero-banner {
+                padding: 40px 20px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .action-btn {
+                justify-content: center;
+            }
+
+            .main-container {
+                padding: 0 20px;
+            }
+
+            .map-card {
+                padding: 30px 20px;
+            }
+
+            .map-content {
+                gap: 25px;
+            }
+
+            .action-sidebar {
+                flex-direction: column;
+            }
+
+            .map-action-btn {
+                min-width: unset;
+            }
+        }
